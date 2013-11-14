@@ -1,8 +1,8 @@
 {
-  "name": "fis-cloud-app-fisrepo",
+  "name": "fis-cloud-app-repos",
   "version": "0.0.5",
-  "description": "fis-cloud-app-fisrepo",
-  "main": "fis-cloud-app-fisrepo.js",
+  "description": "fis-cloud-app-repos",
+  "main": "fis-cloud-app-repos.js",
   "dependencies": {
     "async": "0.2.9",
     "jade": "0.35.0",
@@ -17,7 +17,7 @@
   "keywords": [
     "fis",
     "fis-cloud-app",
-    "fis-cloud-app-fisrepo"
+    "fis-cloud-app-repos"
   ],
   "author": {
     "name": "fis-team"
