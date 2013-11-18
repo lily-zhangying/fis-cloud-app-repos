@@ -14,9 +14,9 @@ block content
 					#categoryPackages.row-fluid(style="margin-top:1.618em;")
 						ol.package-list.category-package-list
 							for component in data.components
-								li(rel="#{component.name}").row-fluid
+								li.(rel="#{component.name}").row-fluid
 									.detail.span8
-										a.name(href="/#{appName}/component_detail?name=#{component.name}") #{component.name}
+										a.emphases.name(href="/#{appName}/component_detail?name=#{component.name}") #{component.name}
 										.description #{component.description}
 									.extra.span4
 
@@ -53,5 +53,5 @@ block content
 						ul.nav.nav-list.category-list
 							for cate in data.categories
 								li(rel='#{cate.name}')
-									a(href='/#{appName}/category?type=#{cate.name}') #{cate.name}
+									a.emphases(href='/#{appName}/category?type=#{cate.name}') #{cate.name}
 										span.count &nbsp;(#{cate.number})

@@ -37,7 +37,7 @@ block content
                                         .span4
                                             span.action updated
                                         .span4(style="font-weight:bold;")
-                                            a.name(href='#{updateComponent.componentUrl}') #{updateComponent.name}
+                                            a.name.emphases(href='#{updateComponent.componentUrl}') #{updateComponent.name}
                                     .extra.span4
                                         | Update &nbsp;#{updateComponent.updateTime}
                   .span3
@@ -47,7 +47,7 @@ block content
                             for downloadComponent in data.downloadComponents
                                 li.row-fluid
                                     .details.span7
-                                        a.name(href='#{downloadComponent.componentUrl}') #{downloadComponent.name}
+                                        a.name.emphases(href='#{downloadComponent.componentUrl}') #{downloadComponent.name}
                                     .extra.span5
                                         | #{downloadComponent.totaldowns}  downloads
                   .span3
@@ -57,7 +57,7 @@ block content
                             for submittorComponent in data.submittorComponents
                                 li.row-fluid
                                     .details.span7
-                                        a.user(href='/#{appName}/user_detail?name=#{submittorComponent.name}') #{submittorComponent.name}
+                                        a.user.emphases(href='/#{appName}/user_detail?name=#{submittorComponent.name}') #{submittorComponent.name}
                                     .extra.span5
                                         | #{submittorComponent.value}  packages
 
@@ -68,5 +68,5 @@ block content
                         ul.nav.nav-list.category-list
                             for cate in data.categories
                                 li(rel='#{cate.name}')
-                                    a(href='/#{appName}/category?type=#{cate.name}') #{cate.name}
+                                    a.emphases(href='/#{appName}/category?type=#{cate.name}') #{cate.name}
                                         span.count&nbsp;(#{cate.number})

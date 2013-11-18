@@ -9,3 +9,12 @@ li.row-fluid:hover{
 div#most-depended-on a{
     font-weight: bold;
 }
+
+.category-list a{
+    font-weight: bold;
+}
+
+.category-list li{
+    margin-top: 2px;
+    margin-bottom: 2px;
+}
