@@ -1,6 +1,7 @@
 var Component = require("../../lib/component.js"),
     render_helper = require("../../lib/render.js"),
     moment = require('moment'),
+    md5 = require('MD5'),
     async = require('async');
 
 module.exports = function(req, res, app){
@@ -17,7 +18,13 @@ module.exports = function(req, res, app){
                     for(var i=0; i<updateComponents.length; i++){
                         updateComponents[i].updateTime = moment(updateComponents[i].updateStamp).fromNow();
                         updateComponents[i].componentUrl = "/" + app.get("appName") + "/component_detail?name=" + updateComponents[i].name;
+                        updateComponents[i].maintainers.forEach(function(m){
+                            if(m.name ==  updateComponents[i].updateAuthor && m.email){
+                                updateComponents[i].emailhash = md5(m.email);
+                            }
+                        });
                     }
+
                     callback(error, updateComponents);
                 }
             });

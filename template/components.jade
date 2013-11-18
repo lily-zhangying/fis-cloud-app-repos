@@ -22,23 +22,25 @@ block content
                           span.help-inline
                 #searchResults.row-fluid(style='margin-top: 1.618em; display: none;')
                 #overview.row-fluid(style='margin-top: 1.618em;')
-                  .span5
+                  .span6
                     h3 最近更新
                     #latest-updates
                         ol.package-list
                             for updateComponent in data.updateComponents
                                 li.row-fluid
+                                    .span1
+                                        img(src="http://www.gravatar.com/avatar/#{updateComponent.emailhash}?size=32")
                                     .details.span7
-                                        .span4
+                                        .span3
                                             a.user(href='/#{appName}/user_detail?name=#{updateComponent.updateAuthor}')
                                                 | #{updateComponent.updateAuthor}
-                                        .span3
+                                        .span4
                                             span.action updated
                                         .span4(style="font-weight:bold;")
                                             a.name(href='#{updateComponent.componentUrl}') #{updateComponent.name}
-                                    .extra.span5
+                                    .extra.span4
                                         | Update &nbsp;#{updateComponent.updateTime}
-                  .span4
+                  .span3
                     h3 下载排行榜
                     #most-depended-on
                         ol.package-list
