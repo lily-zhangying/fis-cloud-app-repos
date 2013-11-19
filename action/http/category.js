@@ -11,7 +11,7 @@ module.exports = function(req, res, app){
     	components : function(callback){
             //query, limit, page, callback
             var query = new Array();
-            query.push(type);
+            query.push(eval("/" + type + "/i"));
     		Component.getComponentByPage({"keywords" : {$in : query}}, 10, page, function(error, components){
     			if(error){
 	                callback(error);
