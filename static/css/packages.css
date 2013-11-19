@@ -186,5 +186,15 @@ body {
 
 .emphases{
     font-size:14px;
-    font-style: bold;
+    font-weight: bold;
 }
+
+.category-list li{
+    margin: 2px 0 2px 0;
+}
+
+#categoryPackages .description{
+    margin-top: 5px;
+}
+
+
