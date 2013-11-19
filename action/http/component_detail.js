@@ -34,7 +34,8 @@ module.exports = function(req, res, app){
                                 username : app.get("userName") ? app.get("userName") : null,
                                 versions : versions,
                                 currentVersion : currentVersion,
-                                maintainers: component.maintainers
+                                maintainers: component.maintainers,
+                                totaldowns:component.totaldowns
                             });
                         }
                     });
@@ -46,7 +47,8 @@ module.exports = function(req, res, app){
                         username : app.get("userName") ? app.get("userName") : null,
                         versions : versions,
                         currentVersion: currentVersion,
-                        maintainers: component.maintainers
+                        maintainers: component.maintainers,
+                        totaldowns:component.totaldowns
                     });
                 }
             }
