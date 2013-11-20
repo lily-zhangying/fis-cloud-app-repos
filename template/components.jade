@@ -71,7 +71,7 @@ block content
                                     a.emphases(href='/#{appName}/category?type=#{cate.name}') #{cate.name}
                                         span.count&nbsp;(#{cate.number})
                     h4 热门
-                    #categories.loaded-counts
+                    #tags.loaded-counts
                         ul.nav.nav-list.category-list
                             for tag in data.hotTags
                                 li(rel='#{tag.name}')
