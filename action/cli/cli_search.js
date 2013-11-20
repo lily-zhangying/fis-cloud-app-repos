@@ -1,51 +1,14 @@
-
+var Component = require("../../lib/component.js");
 module.exports = function(req, res, app){
-    var db = fis.db.getConnection();
-    
-    var query = {},
-        queryObj = {};
+    var query = {};
     if(req.query.q){
         query = req.query.q;
-        //todo 忽略大小写
-        var reg = new RegExp(query, 'g');
-        queryObj = {
-            $or: [
-                {name: reg},
-                {description: reg},
-                {author:reg},
-                {keywords:reg},
-                {"repository.url": reg}
-            ]
-        };
-    }
-
-    var options = {
-        name:true,
-        description:true,
-        keywords: true,
-        author:true,
-        repository:true,
-        version:true,
-        license:true,
-        maintainers:true
-    };
-
-    fis.db.find(fis.db.COLLECTION_LIST.pkg, 'root', queryObj, options, {}, function(err, result){
-        if(err){
-            res.json(500, {error : err});
-        }else{
-            if(result === null){
-                res.json(500, {error : 'sorry, no components found'});
+        Component.search(query, function(err, result){
+            if(err){
+                res.json(500, {error : err});
             }else{
-                //��ѯmaintainers���������飬merge�󷵻�
-                result.toArray(function(err, r){
-                    if(err){
-                        res.json(500, {error : err});
-                    }else{
-                        res.json(200, r);
-                    }
-                });
+                res.json(200, result);
             }
-        }
-    });
+        });
+    }
 };
