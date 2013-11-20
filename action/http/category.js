@@ -1,4 +1,5 @@
 var Component = require("../../lib/component.js"),
+	keyword = require("../../lib/keyword.js"),
     render_helper = require("../../lib/render.js"),
     async = require('async');
 
@@ -23,7 +24,10 @@ module.exports = function(req, res, app){
     		});
     	},
     	categories : function(callback){
-            Component.getCategories(callback);
+            	keyword.getCategories(callback);
+        },
+        hotTags : function(callback){
+        		keyword.getHotTags(callback);
         }
      }, function(error, results){
 	        if(error){

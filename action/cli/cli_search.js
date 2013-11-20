@@ -6,6 +6,7 @@ module.exports = function(req, res, app){
         queryObj = {};
     if(req.query.q){
         query = req.query.q;
+        //todo 忽略大小写
         var reg = new RegExp(query, 'g');
         queryObj = {
             $or: [

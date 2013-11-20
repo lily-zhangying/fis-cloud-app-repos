@@ -1,5 +1,6 @@
 var Component = require("../../lib/component.js"),
     render_helper = require("../../lib/render.js"),
+    Keyword = require("../../lib/keyword.js"),
     moment = require('moment'),
     md5 = require('MD5'),
     async = require('async');
@@ -44,7 +45,10 @@ module.exports = function(req, res, app){
             })
         },
         categories : function(callback){
-            Component.getCategories(callback);
+            Keyword.getCategories(callback);
+        },
+        hotTags : function(callback){
+            Keyword.getHotTags(callback);
         },
         submittorComponents : function(callback){
             Component.getUserPackageNum(callback);
