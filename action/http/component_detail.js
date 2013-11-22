@@ -18,7 +18,7 @@ module.exports = function(req, res, app){
                         item.emailhash = md5(item.email);
                     }
                 });
-                var currentVersion = req.query.version || component.version,
+                var currentVersion = req.query.version || component.latest,
                     currentVersionKey = currentVersion.replace(/\./g, '__'),
                     versions = getVersions(component);
                 if(component.versions[currentVersionKey].readmeFile){
