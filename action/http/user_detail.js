@@ -26,7 +26,8 @@ module.exports = function(req, res, app){
                             total : components.length,
                             components : components,
                             redirectUrl : req.originalUrl,
-                            emailhash : md5(user.email)
+                            emailhash : md5(user.email),
+                            isLogin : req.session.username ? true : false
                         });
                     }
                 });
