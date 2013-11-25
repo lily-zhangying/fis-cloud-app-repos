@@ -39,9 +39,9 @@ module.exports = function(req, res, app){
                     if(component){
                         Component.updateComponent(component, config, user_name, email, function(error, result){
                             if(!error){
-                                res.send(200, "Publish component [" + component.name + "@" + component.version + "] success!");
+                                res.send(200, "Publish component [" + component.name + "@" + config.version + "] success!");
                             }else{
-                                res.send(500, "Publish component [" + component.name + "@" + component.version + "] error [" + error + "]");
+                                res.send(500, "Publish component [" + component.name + "@" + config.version + "] error [" + error + "]");
                             }
                         });
                     }else{
