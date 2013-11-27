@@ -21,35 +21,30 @@ module.exports = function(req, res, app){
                 var currentVersion = req.query.version || component.latest,
                     currentVersionKey = currentVersion.replace(/\./g, '__'),
                     versions = getVersions(component);
+                var renderObj = {
+                    appName : app.get("appName"),
+                    redirectUrl : req.originalUrl,
+                    component : component.versions[currentVersionKey],
+                    username : app.get("userName") ? app.get("userName") : null,
+                    versions : versions,
+                    currentVersion: currentVersion,
+                    maintainers: component.maintainers,
+                    totaldowns:component.totaldowns
+                };
                 if(component.versions[currentVersionKey].readmeFile){
                     Component.getReadmeContent(component.name, currentVersion, function(error, content){
                         if(error){
-                            res.send(500, error);
+                            //readme文件读取出错，或没有内容，不显示readme 
+                            //todo 记录日志 console.log(error);
+                            res.render("component_detail", renderObj);     
+                        }else if(content == null){
+                            res.render("component_detail", renderObj);
                         }else{
-                            var readmeContent = render_helper.parseMarkdown(content);
-                            res.render("component_detail", {
-                                component : component.versions[currentVersionKey],
-                                appName : app.get("appName"),
-                                readmeContent : readmeContent,
-                                username : app.get("userName") ? app.get("userName") : null,
-                                versions : versions,
-                                currentVersion : currentVersion,
-                                maintainers: component.maintainers,
-                                totaldowns:component.totaldowns
-                            });
-                        }
+                            renderObj.readmeContent =  render_helper.parseMarkdown(content.toString());
+                            res.render("component_detail", renderObj);                        }
                     });
                 }else{
-                    res.render("component_detail", {
-                        appName : app.get("appName"),
-                        redirectUrl : req.originalUrl,
-                        component : component.versions[currentVersionKey],
-                        username : app.get("userName") ? app.get("userName") : null,
-                        versions : versions,
-                        currentVersion: currentVersion,
-                        maintainers: component.maintainers,
-                        totaldowns:component.totaldowns
-                    });
+                    res.render("component_detail", renderObj);
                 }
             }
         });
@@ -58,6 +53,7 @@ module.exports = function(req, res, app){
     }
 
 };
+
 
 function getVersions(component){
     var result = [];
