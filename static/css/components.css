@@ -9,3 +9,7 @@ li.row-fluid:hover{
 div#most-depended-on a{
     font-weight: bold;
 }
+
+li{
+	word-wrap: break-word;
+}

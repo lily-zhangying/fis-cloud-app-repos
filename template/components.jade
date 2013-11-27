@@ -31,12 +31,10 @@ block content
                                     .span1
                                         img(src="http://www.gravatar.com/avatar/#{updateComponent.emailhash}?size=32")
                                     .details.span7
-                                        .span3
+                                        .span4
                                             a.user(href='/#{appName}/user_detail?name=#{updateComponent.updateAuthor}')
                                                 | #{updateComponent.updateAuthor}
-                                        .span4
-                                            span.action updated
-                                        .span4(style="font-weight:bold;")
+                                        .span8(style="font-weight:bold;")
                                             a.name.emphases(href='#{updateComponent.componentUrl}') #{updateComponent.name}
                                     .extra.span4
                                         | Update &nbsp;#{updateComponent.updateTime}
