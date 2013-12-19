@@ -29,22 +29,22 @@ module.exports = function(req, res, app){
         hotTags : function(callback){
         		keyword.getHotTags(callback);
         }
-     }, function(error, results){
-	        if(error){
-	            res.send(500, error);
-	        }else{
-	            res.render("category", {
-	                data : results,
-	                appName : app.get("appName"),
-	                redirectUrl : req.originalUrl,
-	                searchUrl : "/" + app.get("appName") + "/component_search",
-	                username : app.get("userName") ? app.get("userName") : null,
-	                type : type,
-	                page : page,
-	                startPage : (page - 1) * 10 + 1,
-	                endPage : (page - 1) * 10 + 10
-	            });
-	        }
-	    }
-	);
+    }, function(error, results){
+        if(error){
+            res.send(500, error);
+        }else{
+            res.render("category", {
+                data : results,
+                appName : app.get("appName"),
+                redirectUrl : req.originalUrl,
+                searchUrl : "/" + app.get("appName") + "/component_search",
+                username : app.get("userName") ? app.get("userName") : null,
+                type : type,
+                page : page,
+                startPage : (page - 1) * 10 + 1,
+                endPage : (page - 1) * 10 + 10
+            });
+        }
+    }
+    );
 };

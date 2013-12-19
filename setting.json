@@ -1,0 +1,20 @@
+{
+    "sync" : {
+        "title" : "同步",
+        "lastUpdateTime" : {
+            "title" : "上一次同步时间"
+        },
+        "syncTime" : {
+            "title" : "同步周期"
+        }
+    },
+    "backup" : {
+        "title" : "备份",
+        "lastUpdateTime" : {
+            "title" : "上一次备份时间"
+        },
+        "syncTime" : {
+            "title" : "备份周期"
+        }
+    }
+}

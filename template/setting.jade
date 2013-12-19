@@ -1,0 +1,14 @@
+extends ./layout/layout.jade
+
+block stylesheets
+   link(
+    rel="stylesheet"
+    href="/static/#{appName}/css/setting.css"
+    )
+
+block content
+    button#syncBtn 同步
+
+block scripts
+    script(type="text/javascript" src="/static/#{appName}/js/a.js")
+
