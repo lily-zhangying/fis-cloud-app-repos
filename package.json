@@ -10,7 +10,9 @@
     "MD5":"1.1.0",
     "moment":"2.3.1",
     "marked": "0.2.9",
-	"sort-component" : "0.1.0"
+	"sort-component" : "0.1.0",
+    "request" : "2.30.0",
+    "q" : "0.9.6"
   },
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
