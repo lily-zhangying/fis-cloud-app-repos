@@ -2,7 +2,7 @@
 var Component = require("../../lib/component.js");
 
 module.exports = function(req, res, app){
-    res.set('connection', 'close');console.log(req.query);
+    res.set('connection', 'close');
     var lastSyncTime = parseInt(req.query.lastSyncTime);
     var currentSyncTime = parseInt(req.query.currentSyncTime);
     //获取两次时间中，更新的pkgs列表

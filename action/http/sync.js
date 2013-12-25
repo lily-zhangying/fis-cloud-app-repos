@@ -1,6 +1,7 @@
 //处理同步数据库的功能
 var Component = require("../../lib/component.js"),
     async = require('async'),
+    cp = require("child_process"),
     logPath = __dirname,
     logFile = logPath + '/SyncLog-',
     request = require("request");
@@ -48,15 +49,16 @@ module.exports = function(req, res, app){
                             }else{
                                 items.forEach(function(i){
                                     //判断maintainer是否一致，一致表示同一资源，不一致表示私有资源，不同步
-                                    if(isSameMaintainer(i.maintainers, components[i.name].maintainers)){
-                                        console.log('=============================');
-                                        //todo 删除names里面的某一项
-                                        delete names[i.name];
+                                    if(!isSameMaintainer(i.maintainers, components[i.name].maintainers)){
+                                        var index = fis.util.array_search(i.name, names);
+                                        if(index !== false){
+                                            names.splice(index, 1);
+                                        }
                                     }
                                 });
-                                console.log(names);
                                 fis.util.write(logFile, '[Start Sync]\n\t', 'utf-8', true);
                                 //@TODO start sync
+                                cp.fork('../../lib/sync.js');
                                 res.send(200, 'Start Sync');
                             }
                         });
