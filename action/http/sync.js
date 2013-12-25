@@ -57,9 +57,19 @@ module.exports = function(req, res, app){
                                     }
                                 });
                                 fis.util.write(logFile, '[Start Sync]\n\t', 'utf-8', true);
-                                //@TODO start sync
-                                cp.fork('../../lib/sync.js');
-                                res.send(200, 'Start Sync');
+                                console.log(names);
+                                fis.util.write(logFile, '[Start Remove]\n\t', 'utf-8', true);
+                                async.each(names, removeComponent, function(err){
+                                    if(err){
+                                        fis.util.write(logFile, '[Sync Error]\t' + 'Error message: ' + err + '\n\t', 'utf-8', true);
+                                        res.send(500, err);
+                                    }else{
+                                        fis.util.write(logFile, '[Remove done]\n\t', 'utf-8', true);
+                                        //@TODO start sync
+                                        cp.exex
+                                        res.send(200, 'Start Sync');
+                                    }
+                                });
                             }
                         });
                     }
@@ -84,3 +94,16 @@ function isSameMaintainer(a, b){
     });
     return ret;
 };
+
+function removeComponent(name, callback){
+    Component.removeComponent(name, 'all', Component.ROOT_USER, function(err, result){
+        if(err){
+            fis.util.write(logFile, '[Sync Error]\t' + 'Pkg Name: ['+ name + ']\n\t'+ 'Error message: ' + err + '\n\t', 'utf-8', true);
+            callback(null, 0);
+        }else{
+            fis.util.write(logFile, '[Remove Success]\t' + 'Pkg Name: ['+ name + ']\n\t', 'utf-8', true);
+            callback(null, 1);
+        }
+    });
+};
+
