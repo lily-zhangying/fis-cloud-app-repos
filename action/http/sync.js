@@ -2,7 +2,9 @@
 var Component = require("../../lib/component.js"),
     async = require('async'),
     cp = require("child_process"),
-    logPath = __dirname,
+    fs = require("fs"),
+    path = require("path"),
+    logPath = __dirname + '/' + fis.util.date_format("yyyy-MM-dd"),
     logFile = logPath + '/SyncLog-',
     request = require("request");
 
@@ -66,7 +68,18 @@ module.exports = function(req, res, app){
                                     }else{
                                         fis.util.write(logFile, '[Remove done]\n\t', 'utf-8', true);
                                         //@TODO start sync
-                                        cp.exex
+                                        var out = fs.openSync(logFile, 'a'),
+                                            err = fs.openSync(logFile.replace('.log', '.error'), 'a');
+                                        var sh = path.dirname(path.dirname(__dirname)) + '/lib/sync.sh';
+                                        console.log(fis.util.exists(sh));
+                                        var child = cp.spawn('sh', [sh], {
+                                            detached: true,
+                                            stdio: ['ignore', out, err],
+                                            env: {
+                                                DUMPPATH : logPath + '/dump-' + lastSyncTime + '-' + currentSyncTime + '.log'
+                                            }
+                                        });
+                                        child.unref();
                                         res.send(200, 'Start Sync');
                                     }
                                 });
