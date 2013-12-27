@@ -4,7 +4,7 @@ var Component = require("../../lib/component.js"),
     cp = require("child_process"),
     fs = require("fs"),
     path = require("path"),
-    logPath = __dirname + '/' + fis.util.date_format("yyyy-MM-dd"),
+    logPath = fis.util.realpath(__dirname) + '/' + fis.util.date_format("yyyy-MM-dd"),
     logFile = logPath + '/SyncLog-',
     request = require("request");
 
@@ -59,7 +59,6 @@ module.exports = function(req, res, app){
                                     }
                                 });
                                 fis.util.write(logFile, '[Start Sync]\n\t', 'utf-8', true);
-                                console.log(names);
                                 fis.util.write(logFile, '[Start Remove]\n\t', 'utf-8', true);
                                 async.each(names, removeComponent, function(err){
                                     if(err){
@@ -67,16 +66,15 @@ module.exports = function(req, res, app){
                                         res.send(500, err);
                                     }else{
                                         fis.util.write(logFile, '[Remove done]\n\t', 'utf-8', true);
-                                        //@TODO start sync
                                         var out = fs.openSync(logFile, 'a'),
                                             err = fs.openSync(logFile.replace('.log', '.error'), 'a');
                                         var sh = path.dirname(path.dirname(__dirname)) + '/lib/sync.sh';
-                                        console.log(fis.util.exists(sh));
                                         var child = cp.spawn('sh', [sh], {
                                             detached: true,
                                             stdio: ['ignore', out, err],
                                             env: {
-                                                DUMPPATH : logPath + '/dump-' + lastSyncTime + '-' + currentSyncTime + '.log'
+                                                DUMPDIR : logPath + '/dump-' + lastSyncTime + '-' + currentSyncTime,
+                                                BINDIR : 'D:/mongodb-win32-i386-2.2.5/mongodb-win32-i386-2.2.5/bin'
                                             }
                                         });
                                         child.unref();

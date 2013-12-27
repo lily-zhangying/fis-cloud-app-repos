@@ -18,8 +18,7 @@ $(document).ready(function(){
                     console.log("succ" + data);
                 }
             };
-console.log(new Date());
-        console.log(url);
+
         $.ajax(options);
         event.preventDefault();
 
