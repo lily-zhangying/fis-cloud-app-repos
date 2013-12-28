@@ -74,7 +74,7 @@ module.exports = function(req, res, app){
                                             stdio: ['ignore', out, err],
                                             env: {
                                                 DUMPDIR : logPath + '/dump-' + lastSyncTime + '-' + currentSyncTime,
-                                                BINDIR : 'D:/mongodb-win32-i386-2.2.5/mongodb-win32-i386-2.2.5/bin'
+                                                BINDIR : DB_BIN_DIR
                                             }
                                         });
                                         child.unref();

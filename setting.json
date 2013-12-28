@@ -1,20 +1,32 @@
 {
-    "sync" : {
-        "title" : "同步",
-        "lastUpdateTime" : {
-            "title" : "上一次同步时间"
+    "db" : {
+        "title" : "数据路配置",
+        "binDir" : "D:/mongodb-win32-i386-2.2.5/mongodb-win32-i386-2.2.5/bin",
+        "sync" : {
+            "title" : "同步",
+            "lastUpdateTime" : {
+                "title" : "上一次同步时间"
+            },
+            "syncTime" : {
+                "title" : "同步周期"
+            }
         },
-        "syncTime" : {
-            "title" : "同步周期"
+        "backup" : {
+            "title" : "备份",
+            "lastUpdateTime" : {
+                "title" : "上一次备份时间"
+            },
+            "syncTime" : {
+                "title" : "备份周期"
+            }
         }
     },
-    "backup" : {
-        "title" : "备份",
-        "lastUpdateTime" : {
-            "title" : "上一次备份时间"
-        },
-        "syncTime" : {
-            "title" : "备份周期"
-        }
+    "log" : {
+        "title" : "log 文件",
+        "logDir" : "D:/log"
+    },
+    "root" : {
+        "title" : "管理员配置",
+        "admins" : []
     }
 }
