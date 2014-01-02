@@ -3,6 +3,7 @@ var render_helper = require("../../lib/render.js"),
 	fs = require('fs');
 
 module.exports = function(req, res, app){
+    res.set('connection', 'close');
     render_helper.setRender(app);
     var pathinfo = fis.util.pathinfo(require.resolve('fis-cloud-app-fisrepo'));
     var path =pathinfo.dirname + "/doc/component.md";

@@ -4,7 +4,7 @@ var Component = require("../../lib/component.js"),
     async = require('async');
 
 module.exports = function(req, res, app){
-
+    res.set('connection', 'close');
     render_helper.setRender(app);
     var type = req.query.type || 'all';
     var page = req.query.page || 1;

@@ -22,7 +22,7 @@
         }
     },
     "log" : {
-        "title" : "log 文件",
+        "title" : "log文件",
         "logDir" : "D:/log"
     },
     "root" : {

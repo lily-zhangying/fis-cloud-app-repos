@@ -2,6 +2,7 @@ var render_helper = require("../../lib/render.js"),
     setting = require("../../lib/set.js");
 
 module.exports = function(req, res, app){
+    res.set('connection', 'close');
     render_helper.setRender(app);
     //读取json内容，渲染到页面
     //读取json内容作为key，value在数据库中
