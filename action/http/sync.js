@@ -4,7 +4,7 @@ var Component = require("../../lib/component.js"),
     cp = require("child_process"),
     fs = require("fs"),
     path = require("path"),
-    logPath = fis.util.realpath(__dirname) + '/' + fis.util.date_format("yyyy-MM-dd"),
+    logPath = fis.util.realpath(LOG_DIR) + '/' + fis.util.date_format("yyyy-MM-dd"),
     logFile = logPath + '/SyncLog-',
     request = require("request");
 

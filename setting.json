@@ -1,32 +1,46 @@
 {
     "db" : {
-        "title" : "数据路配置",
-        "binDir" : "D:/mongodb-win32-i386-2.2.5/mongodb-win32-i386-2.2.5/bin",
-        "sync" : {
-            "title" : "同步",
-            "lastUpdateTime" : {
-                "title" : "上一次同步时间"
-            },
-            "syncTime" : {
-                "title" : "同步周期"
+        "title" : "数据库配置",
+        "value" : {
+            "binDir" : {
+                "title" : "数据库bin路径",
+                "value" : "D:/mongodb-win32-i386-2.2.5/mongodb-win32-i386-2.2.5/bin"
             }
-        },
-        "backup" : {
-            "title" : "备份",
-            "lastUpdateTime" : {
-                "title" : "上一次备份时间"
+        }
+    },
+    "sync" : {
+        "title" : "数据同步配置",
+        "value" : {
+            "lastSyncTime" : {
+                "title" : "上一次同步时间",
+                "value" : "0"
             },
             "syncTime" : {
-                "title" : "备份周期"
+                "title" : "同步周期",
+                "value" : ""
+            },
+            "remoteRepos" : {
+                "title" : "公有仓库",
+                "value" : "fedev.baidu.com:8889"
             }
         }
     },
     "log" : {
-        "title" : "log文件",
-        "logDir" : "D:/log"
+        "title" : "log配置",
+        "value" : {
+            "logDir" : {
+                "title" : "log文件夹路径",
+                "value" : "D:/log"
+            }
+        }
     },
     "root" : {
         "title" : "管理员配置",
-        "admins" : []
+        "value" : {
+            "admins" :  {
+                "title" : "所有管理员",
+                "value" : "root"
+            }
+        }
     }
 }
