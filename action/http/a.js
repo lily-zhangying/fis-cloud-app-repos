@@ -1,7 +1,6 @@
 var render_helper = require("../../lib/render.js"),
     setting = require("../../lib/set.js"),
     async = require('async'),
-    json2html = require('node-json2html');
     _ = require('underscore');
 
 module.exports = function(req, res, app){

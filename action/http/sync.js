@@ -4,12 +4,13 @@ var Component = require("../../lib/component.js"),
     cp = require("child_process"),
     fs = require("fs"),
     path = require("path"),
-    logPath = fis.util.realpath(LOG_DIR) + '/' + fis.util.date_format("yyyy-MM-dd"),
+    logPath = fis.util.realpath(global.LOG_DIR) + '/' + fis.util.date_format("yyyy-MM-dd"),
     logFile = logPath + '/SyncLog-',
     request = require("request");
-
 module.exports = function(req, res, app){
     res.set('connection', 'close');
+    console.log("--------------------------------");
+    console.log(global.LOG_DIR);
     var repos = req.query.repos;
     var remoteRepos = (repos && repos !== 'null') ? (repos + '/repos/syncList' ) : null;
     if(!remoteRepos){
