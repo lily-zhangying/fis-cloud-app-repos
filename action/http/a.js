@@ -38,6 +38,7 @@ module.exports = function(req, res, app){
                         console.log(3);
                         var set = {_id:appName};
                         fis.util.merge(set, json);
+                        console.log(set);
                         if(_.isEqual(set, result)){
                             //todo diff result和json，是否需要界面显示update按钮
                         }else{
