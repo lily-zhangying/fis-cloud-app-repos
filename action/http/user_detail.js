@@ -5,7 +5,6 @@ var Component = require("../../lib/component.js"),
     render_helper = require("../../lib/render.js");
 
 module.exports = function(req, res, app){
-    res.set('connection', 'close');
     render_helper.setRender(app);
     var username = req.query.name;
     if(username){
