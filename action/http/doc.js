@@ -9,40 +9,6 @@ module.exports = function(req, res, app){
     var content = fis.util.read(path);
     res.render("doc",{
         appName : app.get("appName"),
-        // nav : {
-        //  "介绍" : {
-        //      "id" : "intro"
-        //  },
-        //  "安装" : {
-        //      "id" : "installation"   
-        //  },
-        //  "使用" : {
-        //      "id" : "use",
-        //      "list" : {
-        //          "install" : {
-        //              "id" : "install",
-        //          },
-        //          "search" : {
-        //              "id" : "search",
-        //          },
-        //          "adduser" : {
-        //              "id" : "adduser",
-        //          },
-        //          "publish" : {
-        //              "id" : "publish",
-        //          },
-        //          "unpublish" : {
-        //              "id" : "unpublish",
-        //          },
-        //          "owner" : {
-        //              "id" : "owner",
-        //          },
-        //      }
-        //  },
-        //  "联系我们" : {
-        //      "id" : "connect"
-        //  }
-        // },
         doc : marked(content)
     });
 };
